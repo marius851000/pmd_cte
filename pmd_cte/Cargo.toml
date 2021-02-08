@@ -1,0 +1,13 @@
+[package]
+name = "pmd_cte"
+description = "A library for handling CTE file, used in pokemon mystery dungeon on 3ds. Currently only support font (A8 encoding)"
+version = "0.1.0"
+authors = ["marius david <mariusdavid@laposte.net>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+image = "0.23.13"
+thiserror = "1.0.23"
+byteorder = "1.4.2"
