@@ -1,9 +1,13 @@
 [package]
 name = "pmd_cte"
-description = "A library for handling CTE file, used in pokemon mystery dungeon on 3ds. Currently only support font (A8 encoding)"
-version = "0.1.0"
+description = "a library for handling CTE file, used in pokemon mystery dungeon on 3ds. Currently only support font (A8 encoding)"
+version = "1.0.0"
 authors = ["marius david <mariusdavid@laposte.net>"]
 edition = "2018"
+keywords = [ "parser" ]
+repository = "https://github.com/marius851000/pmd_cte"
+categories = [ "parser-implementations" ]
+license = "CC0-1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
