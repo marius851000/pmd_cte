@@ -95,7 +95,7 @@ impl CteImage {
     pub fn decode_cte<R: Read>(input: &mut R) -> Result<CteImage, CteDecodeError> {
         let mut header_buffer = [0; 4];
         input.read_exact(&mut header_buffer)?;
-        if &header_buffer != &CTE_HEADER {
+        if header_buffer != CTE_HEADER {
             return Err(CteDecodeError::InvalideHeader(header_buffer));
         };
         let format_id = input.read_u32::<LE>()?;
@@ -165,13 +165,13 @@ impl CteImage {
     }
 
     pub fn encode_cte<W: Write>(&self, out: &mut W) -> Result<(), CteEncodeError> {
-        out.write(&CTE_HEADER)?;
+        out.write_all(&CTE_HEADER)?;
         out.write_u32::<LE>(self.original_format.get_id())?;
         out.write_u32::<LE>(self.image.width())?;
         out.write_u32::<LE>(self.image.height())?;
         out.write_u32::<LE>(self.original_format.get_pixel_length_bit())?;
         out.write_u32::<LE>(0)?;
-        out.write_u32::<LE>(128 as u32)?;
+        out.write_u32::<LE>(128)?;
         let padding = [0; 128 - (CTE_HEADER_SIZE as usize)];
         out.write_all(&padding)?;
         if self.image.width() % 8 != 0 {
