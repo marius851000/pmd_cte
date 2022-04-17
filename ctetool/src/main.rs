@@ -1,16 +1,16 @@
-use clap::Clap;
+use clap::Parser;
 use image::io::Reader as ImageReader;
 use pmd_cte::{CteFormat, CteImage};
 use std::{fs::File, io::BufReader, path::PathBuf};
 
 /// ctetool can be used to encode or decode cte file (extension .img) from pokemon super mystery dungeon. It only support the font cte file.
-#[derive(Clap)]
+#[derive(Parser)]
 struct Opts {
     #[clap(subcommand)]
     subcmd: SubCommand,
 }
 
-#[derive(Clap)]
+#[derive(Parser)]
 enum SubCommand {
     /// Extract a cte file to an image
     Extract(ExtractParameter),
@@ -18,7 +18,7 @@ enum SubCommand {
     Encode(EncodeParameter),
 }
 
-#[derive(Clap)]
+#[derive(Parser)]
 struct ExtractParameter {
     /// the input .img cte file
     input: PathBuf,
@@ -26,7 +26,7 @@ struct ExtractParameter {
     output: PathBuf,
 }
 
-#[derive(Clap)]
+#[derive(Parser)]
 struct EncodeParameter {
     /// the input picture file
     input: PathBuf,
